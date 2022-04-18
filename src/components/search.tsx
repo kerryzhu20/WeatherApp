@@ -48,14 +48,14 @@ export default class Search extends React.Component<props, states> {
   async onPressForcast() {
     this.setState({fetching: true})
     let locations = await getCoordinates(this.state.input, this.props.searchType)
+    console.log(locations)
     this.setState({fetching: false})
-    if (locations.country) { // if only 1 location, navigate to results right away
+    if (locations.country) { // if query by zipcode, go to results right away since only one location returned
       return this.goToForcast(locations.lat, locations.lon, this.state.input)
-    }
-    if (!Array.isArray(locations) || locations.length == 0) { // location not found, display error state
+    } else if (!Array.isArray(locations) || locations.length == 0) { // location not found, display error state
       this.setState({error: `Cannot find info for ${this.props.searchType}: \"${this.state.input}\"`, locations: []})
       return
-    } else if (locations.length > 1) { // multiple locations found
+    } else { // display potential location
       this.setState({locations: locations, error: ""})
     }
   }
