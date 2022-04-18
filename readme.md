@@ -11,3 +11,6 @@
 2. Ensure phone is connected to the same network as computer.
 3. On the computer, type ```expo start``` in the terminal. Scan QR code and open with Expo Go app.
 
+### Android Shortcut
+The app can be opened without setup if using Expo Go on Android. \
+Open Expo Go app and scan QR code found here: https://expo.dev/@ethereadev/WeatherApp
